@@ -18,18 +18,16 @@ jobs:
         with:
           flutter-version: '3.16.0'
           channel: stable
+          cache: true
 
       - name: Flutter doctor
-        run: flutter doctor
-
-      - name: Create Android platform (FIXED)
-        run: flutter create --platforms android --project-name laporan_toko_app .
+        run: flutter doctor -v
 
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Build APK (verbose)
+        run: flutter build apk --release --verbose
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
